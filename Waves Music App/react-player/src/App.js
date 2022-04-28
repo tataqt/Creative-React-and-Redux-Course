@@ -34,6 +34,7 @@ function App() {
         audioRef={audioRef}
         songs={songs}
         setCurrentSong={setCurrentSong}
+        isPlaying={isPlaying}
       />
       <audio onTimeUpdate={timeUpdateHandler} onLoadedMetadata={timeUpdateHandler} src={currentSong.audio} ref={audioRef} />
     </div>
