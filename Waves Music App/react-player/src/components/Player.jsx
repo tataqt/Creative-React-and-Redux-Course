@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
 
 const Player = (props) => {
-    const { currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, songInfo, songs, setCurrentSong } = props;
+    const { currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, songInfo, songs, setSongs } = props;
 
     const playSongHandler = () => {
         isPlaying ? audioRef.current.pause() : audioRef.current.play();
@@ -33,6 +33,26 @@ const Player = (props) => {
             setCurrentSong(songs[(currentIndex - 1) % songs.length]);
         }
     }
+
+    useEffect(() => {
+        const newSongs = songs.map((song) => {
+            if (song.id === currentSong.id) {
+                return {
+                    ...song,
+                    active: true
+                }
+            } else {
+                return {
+                    ...song,
+                    active: false
+                }
+            }
+        })
+
+        setSongs(newSongs);
+        // eslint-disable-next-line
+    }, [currentSong, songs]);
+
 
     return (
         <div className='player-container'>
