@@ -1,16 +1,16 @@
 .library {
   position: fixed;
   box-shadow: 2px 2px 50px rgb(221, 221, 221);
-  border-radius: 1rem;
+  // border-radius: 1rem;
   top: 0;
   left: 0;
   width: 20rem;
   height: 100%;
   overflow: scroll;
   background: white;
-  // transform: translateX(-100%);
-  // transition: all 0.5s ease;
-  // opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+  opacity: 0;
 
   h2 {
     padding: 2rem;
@@ -31,6 +31,7 @@
     background: rgb(235, 235, 235);
   }
 }
+
 .song-description {
   padding-left: 1rem;
   h3 {
@@ -64,6 +65,7 @@
 .selected {
   background: rgb(194, 208, 253);
 }
+
 .active-library {
   transform: translateX(0%);
   opacity: 1;

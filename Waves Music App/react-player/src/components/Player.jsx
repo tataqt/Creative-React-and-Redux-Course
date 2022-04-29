@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
 
 const Player = (props) => {
-    const { currentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, songInfo } = props;
+    const { isPlaying, setIsPlaying, audioRef, setSongInfo, songInfo } = props;
 
     const playSongHandler = () => {
         isPlaying ? audioRef.current.pause() : audioRef.current.play();
@@ -25,7 +25,7 @@ const Player = (props) => {
         <div className='player-container'>
             <div className="time-control">
                 <p>{getTime(songInfo.currentTime)}</p>
-                <input min={0} max={songInfo.duration} value={songInfo.currentTime} type="range" onChange={dragHandler} />
+                <input min={0} max={songInfo.duration || 0} value={songInfo.currentTime} type="range" onChange={dragHandler} />
                 <p>{getTime(songInfo.duration)}</p>
             </div>
             <div className="play-control">
