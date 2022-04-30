@@ -1,28 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
+  }
+  
+  body {
     font-family: "Lato", sans-serif;
-}
-
-h1,
-h2,
-h3 {
-    color: rgb(54, 54, 54)
-}
-
-h3,
-h4 {
+  }
+  .App {
+    transition: all 0.5s ease;
+  }
+  .library-active {
+    margin-left: 30%;
+  }
+  
+  h1 {
+    font-size: 1rem;
+  }
+  h2 {
+    color: rgb(51, 51, 51);
+  }
+  h3,
+  h4 {
     color: rgb(100, 100, 100);
     font-weight: 400;
-}
-
-@import './_song';
-@import './_player';
-@import './_library';
-@import './_nav';
+  }
+  
+  @import "./song";
+  @import "./player";
+  @import "./library";
+  @import "./nav";

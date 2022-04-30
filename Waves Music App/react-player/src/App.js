@@ -10,7 +10,7 @@ function App() {
   const [songs, setSongs] = useState(data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [songInfo, setSongInfo] = useState({ currentTime: 0, duration: 0 });
+  const [songInfo, setSongInfo] = useState({ currentTime: 0, duration: 0, animationPercentage: 0 });
   const [libraryStatus, setLibraryStatus] = useState(false);
 
   const audioRef = useRef(null);
@@ -18,7 +18,12 @@ function App() {
   const timeUpdateHandler = e => {
     const currentTime = e.target.currentTime;
     const duration = e.target.duration;
-    setSongInfo({ ...songInfo, currentTime, duration });
+
+    const roundedCurrent = Math.round(currentTime);
+    const roundedDuration = Math.round(duration);
+    const animationPercentage = Math.round((roundedCurrent / roundedDuration) * 100)
+
+    setSongInfo({ ...songInfo, currentTime, duration, animationPercentage });
   }
 
   return (
