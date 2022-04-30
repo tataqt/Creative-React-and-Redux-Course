@@ -4,6 +4,7 @@ import Song from './components/Song';
 import Library from './components/Library';
 import Nav from './components/Nav';
 import data from './data';
+import { playAudio } from './utils';
 import './styles/app.scss';
 
 function App() {
@@ -25,6 +26,13 @@ function App() {
 
     setSongInfo({ ...songInfo, currentTime, duration, animationPercentage });
   }
+
+  async function songEndHandler() {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+    playAudio(isPlaying, audioRef);
+    return;
+  };
 
   return (
     <div className="App">
@@ -49,7 +57,13 @@ function App() {
         isPlaying={isPlaying}
         setSongs={setSongs}
       />
-      <audio onTimeUpdate={timeUpdateHandler} onLoadedMetadata={timeUpdateHandler} src={currentSong.audio} ref={audioRef} />
+      <audio
+        onTimeUpdate={timeUpdateHandler}
+        onLoadedMetadata={timeUpdateHandler}
+        src={currentSong.audio}
+        ref={audioRef}
+        onEnded={songEndHandler}
+      />
     </div>
   );
 }

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faAngleLeft, faAngleRight, faPause } from '@fortawesome/free-solid-svg-icons';
-import { playAudio } from '../utils'
-
+import { playAudio } from '../utils';
 
 const Player = (props) => {
     const { currentSong, setCurrentSong, isPlaying, setIsPlaying, audioRef, setSongInfo, songInfo, songs, setSongs } = props;
@@ -23,20 +22,19 @@ const Player = (props) => {
         return `${minutes}:${seconds}`;
     }
 
-    const skipTrackHandler = direction => {
+    const skipTrackHandler = async direction => {
         let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
         if (direction === 'skip-forward') {
-            setCurrentSong(songs[(currentIndex + 1) % songs.length]);
+            await setCurrentSong(songs[(currentIndex + 1) % songs.length]);
         } else if (direction === 'skip-back') {
             if (currentIndex === 0) {
-                setCurrentSong(songs[songs.length - 1]);
+                await setCurrentSong(songs[songs.length - 1]);
                 playAudio(isPlaying, audioRef);
                 return;
             }
-            setCurrentSong(songs[(currentIndex - 1) % songs.length]);
+            await setCurrentSong(songs[(currentIndex - 1) % songs.length]);
         }
         playAudio(isPlaying, audioRef);
-
     }
 
     const trackAnim = {
@@ -67,7 +65,7 @@ const Player = (props) => {
         <div className='player-container'>
             <div className="time-control">
                 <p>{getTime(songInfo.currentTime)}</p>
-                <div className="track" style={{background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`}}>
+                <div className="track" style={{ background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})` }}>
                     <input min={0} max={songInfo.duration || 0} value={songInfo.currentTime} type="range" onChange={dragHandler} />
                     <div className="animate-track" style={trackAnim}></div>
                 </div>
