@@ -5,11 +5,11 @@ import FaqSection from '../components/FaqSection';
 
 const AboutUsPage = () => {
     return (
-        <>
+        <React.Fragment>
             <AboutSection />
             <ServicesSection />
             <FaqSection />
-        </>
+        </React.Fragment>
     );
 };
 
