@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { pageAnimation } from '../animation';
 import styled from 'styled-components';
 import { MovieState } from '../movieState';
 
 const OurWork = () => {
-    const [movies, ] = useState(MovieState);
+    const [movies,] = useState(MovieState);
 
     return (
-        <StyledWork>
+        <StyledWork variants={pageAnimation} initial="hidden" animate="show" exit="exit" style={{ background: '#fff' }}>
             {movies.map((movie) => (
                 <Movie key={movie.url}>
                     <h2>{movie.title}</h2>
@@ -21,7 +23,7 @@ const OurWork = () => {
     );
 };
 
-const StyledWork = styled.div`
+const StyledWork = styled(motion.div)`
     min-height: 100vh;
     overflow: hidden;
     padding: 5rem 10rem;
@@ -42,6 +44,6 @@ const Movie = styled.div`
         height: 70vh;
         object-fit: cover;
     }
-`
+`;
 
 export default OurWork;

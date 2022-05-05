@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { pageAnimation } from '../animation';
 import { useLocation } from 'react-router-dom';
 import { MovieAward as Award } from '../components/MovieAward';
 import { MovieState } from '../movieState';
@@ -12,17 +14,18 @@ const MovieDetail = () => {
 
     useEffect(() => {
         const currentMovie = movies.filter((state) => state.url === url.pathname);
-        setMovie(currentMovie[0]);
+        if (currentMovie[0])
+            setMovie(currentMovie[0]);
     }, [movies, url.pathname]);
 
     return (
-        <Details>
+        <Details variants={pageAnimation} initial="hidden" animate="show" exit="exit">
             <HeadLine>
                 <h2>{movie.title}</h2>
                 <img src={movie.mainImg} alt={movie.title} />
             </HeadLine>
             <Awards>
-                {movie?.awards?.map((award, index) => (
+                {movie.awards?.map((award, index) => (
                     <Award
                         key={index}
                         title={award.title}
@@ -31,13 +34,13 @@ const MovieDetail = () => {
                 ))}
             </Awards>
             <ImageDisplay>
-                    <img src={movie.secondaryImg} alt="" />
+                <img src={movie.secondaryImg} alt="" />
             </ImageDisplay>
         </Details>
     );
 };
 
-const Details = styled.div`
+const Details = styled(motion.div)`
     color: #fff;
 `;
 
