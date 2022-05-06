@@ -9,7 +9,6 @@ export const pageAnimation = {
         transition: {
             staggerChildren: 0.25,
             duration: 0.5,
-            when: 'beforeChildren',
         },
     },
     exit: {
