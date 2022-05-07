@@ -18,10 +18,13 @@ const Nav = () => {
 const StyledNav = styled.nav`
     min-height: 10vh;
     display: flex;
+    position: sticky;
+    top: 0;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 10rem;
     background: #282828;
+    z-index: 2;
     a{
         color: #fff;
         text-decoration: none;

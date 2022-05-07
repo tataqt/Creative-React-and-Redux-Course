@@ -1,11 +1,12 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion'
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUs from "./pages/ContactUs";
 import OurWork from "./pages/OurWork";
 import MovieDetail from './pages/MovieDetail';
 import Nav from "./components/Nav";
 import GlobalStyle from "./components/GlobalStyle"
-import { AnimatePresence } from 'framer-motion'
+
 
 function App() {
   const location = useLocation();
@@ -14,7 +15,7 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <Nav />
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence exitBeforeEnter onExitComplete={() => window.scrollTo(0, 0)}>
         <Routes location={location} key={location.pathname}>
           <Route path='/' exact element={<AboutUsPage />} />
           <Route path='/contact' element={<ContactUs />} />
