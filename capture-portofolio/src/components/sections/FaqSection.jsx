@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AnimateSharedLayout } from 'framer-motion';
-import { useScroll } from '../useHooks/useScroll';
-import { scrollReveal } from '../animation';
-import { About } from '../styles';
-import ToggleFAQ from './Toggle';
+import { useScroll } from '../../useHooks/useScroll';
+import { scrollReveal } from '../../animation';
+import { About } from '../../styles';
+import ToggleFAQ from '../Toggle';
 
 const FaqSection = () => {
     const [element, controls] = useScroll();

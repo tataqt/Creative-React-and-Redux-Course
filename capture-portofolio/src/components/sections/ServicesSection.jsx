@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useScroll } from '../useHooks/useScroll';
-import { scrollReveal } from '../animation';
-import { About, Description, Image } from '../styles';
-import home2 from '../img/home2.png';
-import clock from '../img/clock.svg';
-import diaphragm from '../img/diaphragm.svg';
-import money from '../img/money.svg';
-import teamwork from '../img/teamwork.svg';
+import { useScroll } from '../../useHooks/useScroll';
+import { scrollReveal } from '../../animation';
+import { About, Description, Image } from '../../styles';
+import home2 from '../../img/home2.png';
+import clock from '../../img/clock.svg';
+import diaphragm from '../../img/diaphragm.svg';
+import money from '../../img/money.svg';
+import teamwork from '../../img/teamwork.svg';
 
 
 const ServicesSection = () => {

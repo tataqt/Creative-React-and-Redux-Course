@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { pageAnimation } from '../animation';
-import AboutSection from '../components/AboutSection';
-import ServicesSection from '../components/ServicesSection';
-import FaqSection from '../components/FaqSection';
+import AboutSection from '../components/sections/AboutSection';
+import ServicesSection from '../components/sections/ServicesSection';
+import FaqSection from '../components/sections/FaqSection';
 
 const AboutUsPage = () => {
     return (
