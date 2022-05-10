@@ -1,10 +1,9 @@
-import { popularGamesUrl } from "./api";
+import Home from "./pages/Home";
 
 function App() {
-  console.log(popularGamesUrl());
   return (
     <div className="App">
-      App
+      <Home />
     </div>
   );
 }
