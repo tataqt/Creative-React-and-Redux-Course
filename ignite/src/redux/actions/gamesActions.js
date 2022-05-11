@@ -3,7 +3,7 @@ import {
     popularGamesUrl,
     newGamesUrl,
     upcomingGamesUrl
-} from '../../api'
+} from '../../helpers/api'
 
 export const loadGames = () => async (dispatch) => {
     const popuarData = await axios.get(popularGamesUrl());

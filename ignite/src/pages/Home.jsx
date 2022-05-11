@@ -28,6 +28,30 @@ const Home = () => {
                     />
                 )}
             </Games>
+            <h2>Popular games</h2>
+            <Games>
+                {popular.map(game =>
+                    <Game
+                        key={game.id}
+                        id={game.id}
+                        name={game.name}
+                        released={game.released}
+                        image={game.background_image}
+                    />
+                )}
+            </Games>
+            <h2>New games</h2>
+            <Games>
+                {newGames.map(game =>
+                    <Game
+                        key={game.id}
+                        id={game.id}
+                        name={game.name}
+                        released={game.released}
+                        image={game.background_image}
+                    />
+                )}
+            </Games>
         </GameList>
     );
 };
@@ -45,6 +69,7 @@ const Games = styled(motion.div)`
     grid-template-columns: repeat(auto-fit, minmax(500px,1fr));
     grid-column-gap: 3rem;
     grid-row-gap: 5rem;
+    margin-bottom: 3rem;
 `;
 
 export default Home;
