@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { unLoadDetail } from '../redux/actions/detailAction';
+import { smallImage } from '../helpers/mediaResize';
 
 const GameDetail = () => {
     const dispatch = useDispatch();
@@ -38,14 +39,14 @@ const GameDetail = () => {
                     </Info>
                 </Stats>
                 <Media>
-                    <img src={detail.background_image} alt="game" />
+                    <img src={smallImage(detail.background_image, 1280)} alt="game" />
                 </Media>
                 <Description>
                     <p>{detail.description_raw}</p>
                 </Description>
                 <div className="galary">
                     {detail.screenshots.map(screen =>
-                        <img key={screen.id} src={screen.image} alt='game' />
+                        <img key={screen.id} src={smallImage(screen.image, 1280)} alt='game' />
                     )}
                 </div>
             </Detail>

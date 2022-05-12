@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { loadDetail } from '../redux/actions/detailAction';
+import { smallImage } from '../helpers/mediaResize';
 
 const Game = ({ id, name, released, image }) => {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const Game = ({ id, name, released, image }) => {
         <StyledGame onClick={loadDetailHandler}>
             <h3>{name}</h3>
             <p>{released}</p>
-            <img src={image} alt={name} />
+            <img src={smallImage(image, 420)} alt={name} />
         </StyledGame>
     );
 };
