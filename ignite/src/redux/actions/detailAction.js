@@ -10,7 +10,7 @@ export const loadDetail = (id) => async (dispatch) => {
         payload: {
             game: {
                 ...detaildata.data,
-                screenshot: { ...screenshotData.data.results }
+                screenshots: screenshotData.data.results
             },
         }
     })

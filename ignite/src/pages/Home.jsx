@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Game from '../components/Game';
 import { loadGames } from '../redux/actions/gamesActions';
+import GameDetail from '../components/GameDetail';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Home = () => {
 
     return (
         <GameList>
+            <GameDetail />
             <h2>Upcoming games</h2>
             <Games>
                 {upcoming.map(game =>
