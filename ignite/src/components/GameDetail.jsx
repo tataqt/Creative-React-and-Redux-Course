@@ -2,16 +2,26 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { unLoadDetail } from '../redux/actions/detailAction';
 
 const GameDetail = () => {
+    const dispatch = useDispatch();
     const detail = useSelector(state => state.detail.game);
 
     if (!Object.keys(detail).length) {
         return <></>
     }
 
+    const closeDetailHandler = (e) => {
+        if (e.currentTarget === e.target) {
+            document.body.style.overflow = 'initial';
+            dispatch(unLoadDetail());
+        }
+    }
+
     return (
-        <CardShadow>
+        <CardShadow onClick={closeDetailHandler}>
             <Detail>
                 <Stats>
                     <div className="rating">
@@ -51,6 +61,7 @@ const CardShadow = styled(motion.div)`
     min-height: 100vh;
     overflow-y: scroll;
     background: rgba(0,0,0,0.5);
+    cursor: pointer;
     &::-webkit-scrollbar{
         width: 0.5rem;
     }
@@ -66,10 +77,12 @@ const Detail = styled(motion.div)`
   width: 80%;
   border-radius: 1rem;
   padding: 2rem 5rem;
+  margin: 1rem 0;
   background: #fff;
   position: absolute;
   left: 10%;
   color: #000;
+  cursor: initial;
   img{
       width: 100%;
   }

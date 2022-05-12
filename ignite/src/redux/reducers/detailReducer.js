@@ -9,6 +9,8 @@ export const detailReducers = (state = initState, action) => {
                 ...state,
                 game: action.payload.game,
             };
+        case "CLEAR_DETAIL":
+            return { ...initState };
         default:
             return {
                 ...state

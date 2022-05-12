@@ -13,5 +13,9 @@ export const loadDetail = (id) => async (dispatch) => {
                 screenshots: screenshotData.data.results
             },
         }
-    })
+    });
+}
+
+export const unLoadDetail = () => async (dispatch) => {
+    dispatch({ type: "CLEAR_DETAIL" });
 }
