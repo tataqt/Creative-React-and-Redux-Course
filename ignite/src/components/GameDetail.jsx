@@ -5,7 +5,8 @@ import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { unLoadDetail } from '../redux/actions/detailAction';
 import { smallImage } from '../helpers/mediaResize';
-import {playstation, nintendo, steam, xbox, apple, gamepad} from '../helpers/allImages'
+import { getPlatform, getStars } from '../helpers/util';
+
 
 const GameDetail = () => {
     const dispatch = useDispatch();
@@ -22,24 +23,6 @@ const GameDetail = () => {
         }
     }
 
-    const getPlatform = (platform) => {
-        switch (platform) {
-            case 'Xbox':
-                return xbox;
-            case 'PlayStation':
-                return playstation;
-            case 'Nintendo':
-                return nintendo;
-            case 'iOS':
-                return apple;
-            case 'PC':
-                return steam;
-        
-            default:
-                return gamepad;
-        }
-    }
-
     return (
         <CardShadow onClick={closeDetailHandler}    >
             <Detail layoutId={detail.id}>
@@ -47,6 +30,7 @@ const GameDetail = () => {
                     <div className="rating">
                         <motion.h3 layoutId={`title${detail.id}`}>{detail.name}</motion.h3>
                         <p>Rating: {detail.rating}</p>
+                        {getStars(detail.rating)}
                     </div>
                     <Info>
                         <h3>Platform</h3>
@@ -113,6 +97,11 @@ const Stats = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    img{
+        width: 2rem;
+        height: 2rem;
+        display: inline;
+    }
 `;
 
 const Info = styled(motion.div)`
