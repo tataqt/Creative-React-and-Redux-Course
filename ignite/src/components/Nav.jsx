@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { clearSeacrh, fetchSeacrh } from '../redux/actions/gamesActions';
+import { FadeIn } from '../helpers/animation';
 import logo from '../img/logo.svg'
 
 const Nav = () => {
@@ -16,11 +17,11 @@ const Nav = () => {
     }
 
     const clearSearched = () => {
-        dispatch({ type: "CLEAR_SEARCHED" });
+        dispatch(clearSeacrh());
     }
 
     return (
-        <StyledNav>
+        <StyledNav variants={FadeIn} initial="hidden" animate="show">
             <Logo onClick={clearSearched}>
                 <img src={logo} alt="Logo" />
                 <h1>Ignite</h1>

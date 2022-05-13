@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { loadDetail } from '../redux/actions/detailAction';
 import { smallImage } from '../helpers/mediaResize';
+import { popUp } from '../helpers/animation';
 
 const Game = ({ id, name, released, image }) => {
     const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Game = ({ id, name, released, image }) => {
     }
 
     return (
-        <StyledGame layoutId={id} onClick={loadDetailHandler}>
+        <StyledGame variants={popUp} initial="hidden" animate="show" layoutId={id} onClick={loadDetailHandler}>
             <motion.h3 layoutId={`title${id}`}>{name}</motion.h3>
             <p>{released}</p>
             <motion.img layoutId={`image${id}`} src={smallImage(image, 420)} alt={name} />

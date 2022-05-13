@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Game from '../components/Game';
 import GameDetail from '../components/GameDetail';
 import { loadGames } from '../redux/actions/gamesActions';
+import { FadeIn } from '../helpers/animation';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const Home = () => {
     }, [dispatch]);
 
     return (
-        <GameList>
+        <GameList variants={FadeIn} initial="hidden" animate="show">
             <AnimatePresence >
                 <GameDetail />
             </AnimatePresence>
