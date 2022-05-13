@@ -17,46 +17,46 @@ const Home = () => {
 
     return (
         <GameList>
-                <AnimatePresence >
-                    <GameDetail />
-               
-                <h2>Upcoming games</h2>
-                <Games>
-                    {upcoming.map(game =>
-                        <Game
-                            key={game.id}
-                            id={game.id}
-                            name={game.name}
-                            released={game.released}
-                            image={game.background_image}
-                        />
-                    )}
-                </Games>
-                <h2>Popular games</h2>
-                <Games>
-                    {popular.map(game =>
-                        <Game
-                            key={game.id}
-                            id={game.id}
-                            name={game.name}
-                            released={game.released}
-                            image={game.background_image}
-                        />
-                    )}
-                </Games>
-                <h2>New games</h2>
-                <Games>
-                    {newGames.map(game =>
-                        <Game
-                            key={game.id}
-                            id={game.id}
-                            name={game.name}
-                            released={game.released}
-                            image={game.background_image}
-                        />
-                    )}
-                </Games>
-                </AnimatePresence>
+            <AnimatePresence >
+                <GameDetail />
+            </AnimatePresence>
+            <h2>Upcoming games</h2>
+            <Games>
+                {upcoming.map(game =>
+                    <Game
+                        key={`upcoming-${game.id}`}
+                        id={game.id}
+                        name={game.name}
+                        released={game.released}
+                        image={game.background_image}
+                    />
+                )}
+            </Games>
+            <h2>Popular games</h2>
+            <Games>
+                {popular.map(game =>
+                    <Game
+                        key={`popular-${game.id}`}
+                        id={game.id}
+                        name={game.name}
+                        released={game.released}
+                        image={game.background_image}
+                    />
+                )}
+            </Games>
+            <h2>New games</h2>
+            <Games>
+                {newGames.map(game =>
+                    <Game
+                        key={`newGames-${game.id}`}
+                        id={game.id}
+                        name={game.name}
+                        released={game.released}
+                        image={game.background_image}
+                    />
+                )}
+            </Games>
+
         </GameList>
     );
 };

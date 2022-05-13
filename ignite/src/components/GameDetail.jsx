@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import { unLoadDetail } from '../redux/actions/detailAction';
 import { smallImage } from '../helpers/mediaResize';
+import {playstation, nintendo, steam, xbox, apple, gamepad} from '../helpers/allImages'
 
 const GameDetail = () => {
     const dispatch = useDispatch();
@@ -21,6 +22,24 @@ const GameDetail = () => {
         }
     }
 
+    const getPlatform = (platform) => {
+        switch (platform) {
+            case 'Xbox':
+                return xbox;
+            case 'PlayStation':
+                return playstation;
+            case 'Nintendo':
+                return nintendo;
+            case 'iOS':
+                return apple;
+            case 'PC':
+                return steam;
+        
+            default:
+                return gamepad;
+        }
+    }
+
     return (
         <CardShadow onClick={closeDetailHandler}    >
             <Detail layoutId={detail.id}>
@@ -32,8 +51,8 @@ const GameDetail = () => {
                     <Info>
                         <h3>Platform</h3>
                         <Platforms>
-                            {detail.platforms.map(data =>
-                                <h3 key={data.platform.id}>{data.platform.name}</h3>
+                            {detail.parent_platforms.map(data =>
+                                <img key={data.platform.id} src={getPlatform(data.platform.name)} alt={data.platform.name}/>
                             )}
                         </Platforms>
                     </Info>
