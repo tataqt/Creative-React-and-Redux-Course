@@ -22,11 +22,11 @@ const GameDetail = () => {
     }
 
     return (
-        <CardShadow onClick={closeDetailHandler}>
-            <Detail>
+        <CardShadow onClick={closeDetailHandler}    >
+            <Detail layoutId={detail.id}>
                 <Stats>
                     <div className="rating">
-                        <h3>{detail.name}</h3>
+                        <motion.h3 layoutId={`title${detail.id}`}>{detail.name}</motion.h3>
                         <p>Rating: {detail.rating}</p>
                     </div>
                     <Info>
@@ -39,7 +39,7 @@ const GameDetail = () => {
                     </Info>
                 </Stats>
                 <Media>
-                    <img src={smallImage(detail.background_image, 1280)} alt="game" />
+                    <motion.img layoutId={`image${detail.id}`} src={smallImage(detail.background_image, 1280)} alt="game" />
                 </Media>
                 <Description>
                     <p>{detail.description_raw}</p>
@@ -62,6 +62,7 @@ const CardShadow = styled(motion.div)`
     min-height: 100vh;
     overflow-y: scroll;
     background: rgba(0,0,0,0.5);
+    z-index: 1;
     cursor: pointer;
     &::-webkit-scrollbar{
         width: 0.5rem;

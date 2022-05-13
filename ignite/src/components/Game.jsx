@@ -14,10 +14,10 @@ const Game = ({ id, name, released, image }) => {
     }
 
     return (
-        <StyledGame onClick={loadDetailHandler}>
-            <h3>{name}</h3>
+        <StyledGame layoutId={id} onClick={loadDetailHandler}>
+            <motion.h3 layoutId={`title${id}`}>{name}</motion.h3>
             <p>{released}</p>
-            <img src={smallImage(image, 420)} alt={name} />
+            <motion.img layoutId={`image${id}`} src={smallImage(image, 420)} alt={name} />
         </StyledGame>
     );
 };

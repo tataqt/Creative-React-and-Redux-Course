@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Game from '../components/Game';
 import { loadGames } from '../redux/actions/gamesActions';
 import GameDetail from '../components/GameDetail';
@@ -17,43 +17,46 @@ const Home = () => {
 
     return (
         <GameList>
-            <GameDetail />
-            <h2>Upcoming games</h2>
-            <Games>
-                {upcoming.map(game =>
-                    <Game
-                        key={game.id}
-                        id={game.id}
-                        name={game.name}
-                        released={game.released}
-                        image={game.background_image}
-                    />
-                )}
-            </Games>
-            <h2>Popular games</h2>
-            <Games>
-                {popular.map(game =>
-                    <Game
-                        key={game.id}
-                        id={game.id}
-                        name={game.name}
-                        released={game.released}
-                        image={game.background_image}
-                    />
-                )}
-            </Games>
-            <h2>New games</h2>
-            <Games>
-                {newGames.map(game =>
-                    <Game
-                        key={game.id}
-                        id={game.id}
-                        name={game.name}
-                        released={game.released}
-                        image={game.background_image}
-                    />
-                )}
-            </Games>
+                <AnimatePresence >
+                    <GameDetail />
+               
+                <h2>Upcoming games</h2>
+                <Games>
+                    {upcoming.map(game =>
+                        <Game
+                            key={game.id}
+                            id={game.id}
+                            name={game.name}
+                            released={game.released}
+                            image={game.background_image}
+                        />
+                    )}
+                </Games>
+                <h2>Popular games</h2>
+                <Games>
+                    {popular.map(game =>
+                        <Game
+                            key={game.id}
+                            id={game.id}
+                            name={game.name}
+                            released={game.released}
+                            image={game.background_image}
+                        />
+                    )}
+                </Games>
+                <h2>New games</h2>
+                <Games>
+                    {newGames.map(game =>
+                        <Game
+                            key={game.id}
+                            id={game.id}
+                            name={game.name}
+                            released={game.released}
+                            image={game.background_image}
+                        />
+                    )}
+                </Games>
+                </AnimatePresence>
         </GameList>
     );
 };
