@@ -2,11 +2,21 @@ const initState = {
     popular: [],
     newGames: [],
     upcoming: [],
-    serched: []
+    searched: []
 }
 
 export const gamesReducers = (state = initState, action) => {
     switch (action.type) {
+        case "FETCH_SEARCHED":
+            return {
+                ...state,
+                searched: action.payload.searched
+            };
+        case "CLEAR_SEARCHED":
+            return {
+                ...state,
+                searched: []
+            };
         case "FETCH_GAMES":
             return {
                 ...state,

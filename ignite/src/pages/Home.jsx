@@ -8,7 +8,7 @@ import { loadGames } from '../redux/actions/gamesActions';
 
 const Home = () => {
     const dispatch = useDispatch();
-    const { popular, newGames, upcoming } = useSelector(state => state.games);
+    const { popular, newGames, upcoming, searched } = useSelector(state => state.games);
 
     useEffect(() => {
         dispatch(loadGames());
@@ -20,6 +20,22 @@ const Home = () => {
             <AnimatePresence >
                 <GameDetail />
             </AnimatePresence>
+            {searched.length ? <>
+                <h2>Searched games</h2>
+                <Games>
+                    {searched.map(game =>
+                        <Game
+                            key={`upcoming-${game.id}`}
+                            id={game.id}
+                            name={game.name}
+                            released={game.released}
+                            image={game.background_image}
+                        />
+                    )}
+                </Games>
+            </>
+                : <></>
+            }
             <h2>Upcoming games</h2>
             <Games>
                 {upcoming.map(game =>
@@ -57,7 +73,7 @@ const Home = () => {
                 )}
             </Games>
 
-        </GameList>
+        </GameList >
     );
 };
 

@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { clearSeacrh, fetchSeacrh } from '../redux/actions/gamesActions';
 import logo from '../img/logo.svg'
 
 const Nav = () => {
+    const dispatch = useDispatch();
+    const [textInput, setTextInput] = useState('');
+
+    const searchHandler = (e) => {
+        e.preventDefault();
+        textInput && dispatch(fetchSeacrh(textInput));
+        setTextInput('');
+    }
+
+    const clearSearched = () => {
+        dispatch({ type: "CLEAR_SEARCHED" });
+    }
+
     return (
         <StyledNav>
-            <Logo>
+            <Logo onClick={clearSearched}>
                 <img src={logo} alt="Logo" />
                 <h1>Ignite</h1>
             </Logo>
             <Search>
-                <input type="text" />
-                <button>Seacrch</button>
+                <input type="text" value={textInput} onChange={(e) => setTextInput(e.target.value)} />
+                <button onClick={searchHandler}>Seacrch</button>
             </Search>
         </StyledNav>
     );
@@ -34,7 +49,7 @@ const Logo = styled(motion.div)`
     }
 `;
 
-const Search = styled(motion.div)`
+const Search = styled(motion.form)`
     input{
         width: 30%;
         font-size: 1.5rem;
@@ -49,7 +64,7 @@ const Search = styled(motion.div)`
         border: none;
         padding: 0.5rem 2rem;
         cursor: pointer;
-        background: steelblue;
+        background: #FF7676;
         color: #fff;
     }
 `;

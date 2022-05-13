@@ -16,6 +16,6 @@ export const loadDetail = (id) => async (dispatch) => {
     });
 }
 
-export const unLoadDetail = () => async (dispatch) => {
-    dispatch({ type: "CLEAR_DETAIL" });
+export const unLoadDetail = () => {
+    return { type: "CLEAR_DETAIL" };
 }
