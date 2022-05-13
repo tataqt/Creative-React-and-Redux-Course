@@ -1,8 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { useDispatch } from 'react-redux';
 import { unLoadDetail } from '../redux/actions/detailAction';
 import { smallImage } from '../helpers/mediaResize';
 import { getPlatform, getStars } from '../helpers/util';

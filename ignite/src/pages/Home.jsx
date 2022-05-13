@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import Game from '../components/Game';
-import { loadGames } from '../redux/actions/gamesActions';
 import GameDetail from '../components/GameDetail';
+import { loadGames } from '../redux/actions/gamesActions';
 
 const Home = () => {
     const dispatch = useDispatch();
